@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+    Проект код будущего
+{% endblock %}
+
+{% block content %}
+    {% include 'compatents/in_home.html'%}
+    <section class="details">
+        <h2 class="details__title">
+            Последние события в мире киберпространства
+        </h2>
+        <p class="details__description">
+            Ознакомьтесь с информацией, чтобы быть в курсе новейших киберугроз и получить советы экспертов по безопасности.
+        </p>
+        <ul class="details__lister">
+            <li class="details__items itemsActiv">
+                <a href="#" class="details__link">
+                    Все статьи из модели
+                </a>
+            </li>
+            <li class="details__items">
+                <a href="#"  class="details__link">
+                    Первый модель
+                </a>
+            </li>
+            <li class="details__items">
+                <a href="#"  class="details__link">
+                    Второй модель
+                </a>
+            </li>
+        </ul>
+        <div class="details__posts">
+            {% for post in posts %}
+                <a href="{{ post.get_absolute_url }}" class="details__post">
+                    <div class="details__post-top">
+                        <div class="details__post-tag">
+                            {{post.slug}}
+                            2323
+                        </div>
+                        <div class="details__post-img">
+                            {% thumbnail post.img "300x200" crop="100%" as im %}
+                               <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        </div>
+                        <div class="details__post-inser">
+                            <div class="details__post-look">
+                                <i class="bi bi-eye-fill"></i>
+                                24
+                            </div>
+                            <div class="details__post-data">
+                                <i class="bi bi-calendar-week"></i>
+                                <time>{{post.created}}</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details__post-bottom">
+                        <h3 class="details__post-title">
+                            {{post.title}}
+                        </h3>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'compatents/in_group.html'%}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{post.title}}
+{% endblock %}
+
+{% block content %}
+  <section class="post__wrapper">
+    <div class="post">
+      <h3 class="post__title">{{post.title}}</h3>
+      <div class="post__details">
+          <div class="post__details-look">
+              <i class="bi bi-eye-fill"></i>
+              24,390
+          </div>
+          <div class="post__details-data">
+              <span>Дата публикации:</span>
+              <time>{{post.created}}</time>
+          </div>
+          <a href="#" class="post__details-link">
+              <i class="bi bi-share-fill"></i>
+          </a>
+      </div>
+      <div class="post__image">
+          <div class="post__image-tag">
+            {{post.slug}}
+          </div>
+          <div class="post__image-img">
+              <img src="{{post.img.url}}">
+          </div>
+      </div>
+      <p class="post__description">
+          {{post.body|safe}}
+      </p>
+    </div>
+  </section>
+{% endblock %}
