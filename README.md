@@ -4,14 +4,12 @@
 
 
 ---
-![Alt-текст](https://github.com/islamhadjime/codeAvtury/static/img/AAASS.jpg "SCREEN")
+![Alt-текст](https://github.com/islamhadjime/codeAvtury/blob/main/static/img/AAASS.jpg "SCREEN")
 
 
 ---
 ```
-git clone  https://github.com/islamhadjime/web_fron.git
-cd web_fron /
-click on index.html
+git clone  https://github.com/islamhadjime/codeAvtury.git
 ```
 
 ---
