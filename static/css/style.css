@@ -517,14 +517,75 @@ body{
 	color: #11011E;
 }
 
+/*  ======== post__comment ====== */
+.post__comment{
+	width: 100%;
+	padding: 10px ;
+
+}
+
+.post__comment-user{
+	width: 100%;
+	max-height: 400px;
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: #11011E;
+	padding: 10px;
+}
+.comment_appender{
+	color: #D4D4D4;
+	border-radius: 10px;
+	border: 1px solid #D4D4D4;
+	padding: 5px;
+	margin-top: 10px;
+}
+.comment_appender .info{
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.post__comment-form{
+	margin-top: 50px;
+}
+
+.post__comment-form p label{
+	display: none;
+}
+.post__comment-form input,textarea{
+	width: 500px;
+	padding:10px;
+	background-color: transparent;
+	border: 1px solid #D4D4D4 ;
+	color: #EEE;
+
+}
+.post__comment-form input::placeholder,
+textarea::placeholder{
+	font-size: 17px;
+	font-weight: bold;
+	color: #5b5c5c;
+}
+.comment_btn{
+	max-width: 200px;
+	padding: 10px;
+	background-color: #11011E !important;
+	border:1px solid transparent;
+	color: #D4D4D4;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+}
 
 
-
-
-
-
-
-
+/*  ========= post__file */
+.post__file{
+	margin: 40px 0;
+	padding: 10px;
+	background-color: azure;
+	border-radius: 4px;
+	color: black;
+}
 
 
 

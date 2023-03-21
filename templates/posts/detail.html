@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}
     {{post.title}}
@@ -33,6 +34,110 @@
       <p class="post__description">
           {{post.body|safe}}
       </p>
+
+      {% if post.file %}
+        <div class="post__file">
+          <span>Скачать ДЗ</span>
+          <a href="{{post.file.url}}" class="post__file-btn">{{post.file}}</a>
+        </div>
+      {% endif %}
+
+      <hr>
+      <br>
+
+
+      <div class="post__comment">
+        <div class="post__comment-col">
+          {% with comments.count as total_comments %}
+            <h2>{{ total_comments }} Комментарии</h2>
+          {% endwith %}
+        </div>
+        <div class="post__comment-user">
+          {% for comment in comments %}
+            <div class="comment_appender">
+              <p class="info">
+                Комментарий {{ forloop.counter }} by {{ comment.name }}
+                {{ comment.created }}
+              </p>
+              {{ comment.body|linebreaks }}
+            </div>
+          {% empty %}
+              <p>Пока нет комментариев.</p>
+           {% endfor %}
+
+        </div>
+
+
+        <div class="post__comment-form">
+          {% if new_comment %}
+            <h2>Ваш комментарий был добавлен.</h2>
+          {% else %}
+            <h2>Добавить новый комментарий</h2>
+            <form action="." method="post">
+              {{ comment_form.as_p }}
+              {% csrf_token %}
+              <p><input type="submit" value="Добавить комментарий" class="comment_btn"></p>
+          </form>
+          {% endif %}
+        </div>
+
+      </div>
+
     </div>
+
+
+    <!--  POST DETAIL  -->
+    <div class="rekomenda">
+      <h3 class="rekomenda__title">
+        Популярные статьи
+      </h3>
+      <ul class="rekomenda__list">
+        <li class="rekomenda__item itemsActiv">
+          <a  href="#" class="rekomenda__link">
+            За день
+          </a>
+        </li>
+        <li class="rekomenda__item">
+          <a href="#" class="rekomenda__link">
+            За неделю
+          </a>
+        </li>
+        <li class="rekomenda__item">
+          <a href="#" class="rekomenda__link">
+            За месяц
+          </a>
+        </li>
+      </ul>
+      <div class="rekomenda__posts">
+        {% for post in similar_posts %}
+        <article class="rekomenda__post">
+          <div class="rekomenda__post-right">
+            <div class="rekomenda__post-tag">
+              {{post.slug }}
+            </div>
+            <div class="rekomenda__post-img">
+              {% thumbnail post.img "200x190" crop="100%" as im %}
+                <img src="{{ im.url }}">
+              {% endthumbnail %}
+            </div>
+            <div class="rekomenda__post-look">
+              <i class="bi bi-eye-fill"></i>
+              23,2323
+            </div>
+          </div>
+          <div class="rekomenda__post-left">
+            <h4 class="rekomenda__post-title">
+              {{post.title }}
+            </h4>
+
+            <a href="{{post.get_absolute_url}}" class="rekomenda__post-link">
+              Просмотреть
+            </a>
+          </div>
+        </article>
+
+        {% endfor %}
+      </div>
+
   </section>
 {% endblock %}

@@ -15,21 +15,13 @@
             Ознакомьтесь с информацией, чтобы быть в курсе новейших киберугроз и получить советы экспертов по безопасности.
         </p>
         <ul class="details__lister">
-            <li class="details__items itemsActiv">
-                <a href="#" class="details__link">
-                    Все статьи из модели
-                </a>
-            </li>
-            <li class="details__items">
-                <a href="#"  class="details__link">
-                    Первый модель
-                </a>
-            </li>
-            <li class="details__items">
-                <a href="#"  class="details__link">
-                    Второй модель
-                </a>
-            </li>
+            {% for curser in curs  %}
+                <li class="details__items itemsActiv">
+                    <a href="#" class="details__link">
+                        {{ curser.curs_name }}
+                    </a>
+                </li> 
+            {% endfor %}
         </ul>
         <div class="details__posts">
             {% for post in posts %}

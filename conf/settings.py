@@ -3,8 +3,7 @@
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '#'
-
+SECRET_KEY = 'django-insecure-0!s2o*vogna#9y71ufxrype-$j3szdzhi+2w!zo3g$p1&zex%s'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
@@ -21,6 +20,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'ckeditor',
     'ckeditor_uploader',
+    'taggit'
 
 ]
 CKEDITOR_CONFIGS = {
