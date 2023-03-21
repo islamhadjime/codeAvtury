@@ -1,7 +1,7 @@
-*.log
-*.pot
-*.pyc
-__pycache__
 db.sqlite3
 media
 my_env
+
+/db.sqlite3
+/media
+/my_env
