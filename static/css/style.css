@@ -22,6 +22,7 @@ body{
     background: rgb(17,1,30);
 	background: radial-gradient(circle, rgba(17,1,30,0.8815567859111388) 7%, rgba(17,1,30,0.9827837797761695) 100%);
 	font-family: normal;
+	font-family: 'Heebo',sans-serif;
 
 }
 
@@ -79,7 +80,18 @@ body{
 }
 .header__social a{
 	margin-right: 20px;
+	width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #FFF;
+	color: #11011E;
+	fill: #11011E;
 }
+
+
 .header__mobile{
 	font-size: 30px;
 	font-weight: bold;
@@ -125,7 +137,14 @@ body{
 	padding: 12px 37px;
 	border-radius: 5px;
 }
-
+.btn-zap{
+	line-height: 21px;
+    color: #ECF1F0;
+    padding: 12px 37px;
+    border-radius: 5px;
+    border: 1px solid #0FAE96;
+    margin-left: 20px;
+}
 .introduction__img{
 	max-width: 50%;
 }
@@ -529,13 +548,12 @@ body{
 	max-height: 400px;
 	overflow: scroll;
 	overflow-x: hidden;
-	background-color: #11011E;
 	padding: 10px;
 }
 .comment_appender{
 	color: #D4D4D4;
 	border-radius: 10px;
-	border: 1px solid #D4D4D4;
+	background-color: #11011E;
 	padding: 5px;
 	margin-top: 10px;
 }
@@ -561,15 +579,14 @@ body{
 }
 .post__comment-form input::placeholder,
 textarea::placeholder{
-	font-size: 17px;
 	font-weight: bold;
 	color: #5b5c5c;
 }
 .comment_btn{
-	max-width: 200px;
+	max-width: 150px;
 	padding: 10px;
 	background-color: #11011E !important;
-	border:1px solid transparent;
+	border: none !important;
 	color: #D4D4D4;
 	border-radius: 10px;
 	font-weight: bold;
@@ -580,13 +597,26 @@ textarea::placeholder{
 
 /*  ========= post__file */
 .post__file{
+	display: inline-block;
 	margin: 40px 0;
-	padding: 10px;
+	padding: 5px;
 	background-color: azure;
 	border-radius: 4px;
-	color: black;
+	transition: .3s;
+	cursor: pointer;
 }
-
+.post__file:hover{
+	transform: scale(1.05);
+}
+.post__file a{
+	color: #11011E;
+	letter-spacing: 0.5px;
+	line-height: 24px;
+}
+.post__file i{
+	color: #11011E;
+	margin-left: 5px;
+}
 
 
 /* ========== MEDIA =============*/
@@ -631,6 +661,15 @@ textarea::placeholder{
 	.introduction__img{
 		max-width: 100%;
 	}
+	.introduction__content-group{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.btn-zap{
+		margin: 0;
+		margin-top: 20px;
+	}
 }
 @media screen and (max-width: 620px){
 
@@ -640,6 +679,7 @@ textarea::placeholder{
 	.header__swepper{
 		display: none;
 	}
+	
 
 	.details__posts{
 		justify-content: center;

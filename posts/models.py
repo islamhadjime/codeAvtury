@@ -9,7 +9,6 @@ from taggit.managers import TaggableManager
 
 
 
-
 class Curs(models.Model):
     curs_name = models.CharField(max_length=200,verbose_name="названия курсы")
 
@@ -47,6 +46,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10,choices=STATUS_CHOICES,default='draft')
     curs_name = models.ForeignKey(Curs,on_delete=models.CASCADE)
     file      = models.FileField(upload_to="Post/Fil",blank=True,null=True,verbose_name="Файл")
+    count_views = models.IntegerField(default=0)
     object = models.Manager()
     published = PublishedManager()
     tags = TaggableManager()
@@ -86,3 +86,12 @@ class Comment(models.Model):
 
 
 
+
+
+
+class PostCountViews(models.Model):
+    sesId = models.CharField(max_length=150,db_index=True)
+    postId = models.ForeignKey(Post,blank=True,null=True,default=True,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}'.format(self.sesId)

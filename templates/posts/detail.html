@@ -13,7 +13,7 @@
       <div class="post__details">
           <div class="post__details-look">
               <i class="bi bi-eye-fill"></i>
-              24,390
+              {{post.count_views}}
           </div>
           <div class="post__details-data">
               <span>Дата публикации:</span>
@@ -37,8 +37,8 @@
 
       {% if post.file %}
         <div class="post__file">
-          <span>Скачать ДЗ</span>
-          <a href="{{post.file.url}}" class="post__file-btn">{{post.file}}</a>
+          <a href="{{post.file.url}}" class="post__file-btn">Скачать</a>
+          <i class="bi bi-arrow-down-circle-fill"></i>
         </div>
       {% endif %}
 
@@ -64,7 +64,6 @@
           {% empty %}
               <p>Пока нет комментариев.</p>
            {% endfor %}
-
         </div>
 
 
@@ -76,7 +75,7 @@
             <form action="." method="post">
               {{ comment_form.as_p }}
               {% csrf_token %}
-              <p><input type="submit" value="Добавить комментарий" class="comment_btn"></p>
+              <p><input type="submit" value="Отправить" class="comment_btn"></p>
           </form>
           {% endif %}
         </div>
@@ -110,31 +109,31 @@
       </ul>
       <div class="rekomenda__posts">
         {% for post in similar_posts %}
-        <article class="rekomenda__post">
-          <div class="rekomenda__post-right">
-            <div class="rekomenda__post-tag">
-              {{post.slug }}
+          <article class="rekomenda__post">
+            <div class="rekomenda__post-right">
+              <div class="rekomenda__post-tag">
+                {{post.slug }}
+              </div>
+              <div class="rekomenda__post-img">
+                {% thumbnail post.img "200x190" crop="100%" as im %}
+                  <img src="{{ im.url }}">
+                {% endthumbnail %}
+              </div>
+              <div class="rekomenda__post-look">
+                <i class="bi bi-eye-fill"></i>
+                {{post.count_views}}
+              </div>
             </div>
-            <div class="rekomenda__post-img">
-              {% thumbnail post.img "200x190" crop="100%" as im %}
-                <img src="{{ im.url }}">
-              {% endthumbnail %}
-            </div>
-            <div class="rekomenda__post-look">
-              <i class="bi bi-eye-fill"></i>
-              23,2323
-            </div>
-          </div>
-          <div class="rekomenda__post-left">
-            <h4 class="rekomenda__post-title">
-              {{post.title }}
-            </h4>
+            <div class="rekomenda__post-left">
+              <h4 class="rekomenda__post-title">
+                {{post.title }}
+              </h4>
 
-            <a href="{{post.get_absolute_url}}" class="rekomenda__post-link">
-              Просмотреть
-            </a>
-          </div>
-        </article>
+              <a href="{{post.get_absolute_url}}" class="rekomenda__post-link">
+                Просмотреть
+              </a>
+            </div>
+          </article>
 
         {% endfor %}
       </div>
